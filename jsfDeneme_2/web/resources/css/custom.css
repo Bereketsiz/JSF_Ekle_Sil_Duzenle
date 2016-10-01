@@ -1,0 +1,30 @@
+.personel-tablo{   
+/*    border-collapse:collapse;*/
+    margin: 0px;
+    padding: 0px;
+    width: 500px;
+    border: 2px solid #ffffff;
+
+} 
+
+.personel-tablo-baslik{
+    text-align:center;
+    background:none repeat scroll 0 0 yellowgreen;
+    border-bottom:2px solid bisque;
+    padding:10px;
+}
+
+.personel-tablo-tek-satir{
+    text-align:center;
+    background:none repeat scroll 0 0 bisque;
+    border-top:2px solid buttonface;
+    height: 40px;
+}
+
+.personel-tablo-cift-satir{
+    text-align:center;
+    background:none repeat scroll 0 0 ivory;
+    border-top:2px solid bisque;
+    height: 40px;
+
+} 

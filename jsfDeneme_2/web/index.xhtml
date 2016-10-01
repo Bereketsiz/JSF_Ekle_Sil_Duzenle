@@ -1,0 +1,124 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
+    <h:head>
+        <title>Facelet Title</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+
+        <script>// Güncelleme işlemi sonucunu pop-up olarak bize verecek.
+            function mesaj(){
+                if(#{yazarlarBean.guncelle()})
+                alert("Güncelleme Ba\u015farılı.");
+                else {
+                    alert("Güncelleme Ba\u015farısız.");  
+                }
+            }
+        </script>
+
+    </h:head>
+
+    <h:body>
+        <h:outputStylesheet library="css" name="style.css" />
+        <h:outputStylesheet library="css" name="custom.css" />
+        <div class="anacerceve">
+            <div class="tablodiscerceve">
+                <table class="kayit" style="width: 300px;">
+                    <h:form>
+
+                        <tr>
+                            <thead><h2 style="margin: 0px; padding: 0px; color: brown; text-align: center">PERSONEL KAYIT FORMU</h2></thead>
+                            <!--Burada kayıt işlemi yaptığımız için Beanadı.değişken değerini inputların textlerine atıyuruz o kadar.-->
+                            <td class="baslikYazilari">Pesonel Adı : </td>
+                            <td><h:inputText value="#{yazarlarBean.isim}"/></td>
+                        </tr>
+                        <tr>
+                            <td class="baslikYazilari">Personel Soyadı : </td>
+                            <td><h:inputText value="#{yazarlarBean.alani}"/></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><h:commandButton value="Personel Ekle"
+                                                 action="#{yazarlarBean.verileriKaydet()}"/></td>
+                        </tr>   
+                    </h:form>
+                </table>
+                <br/>
+                <h:form>
+                    <table>
+                        <!--Burada güncelleme işlemi yaptığımız için Beanadı.değişken değerini yine inputların textlerine atıyuruz o kadar.-->
+                        <div class="personelGuncelleDuzenle">PERSONEL &nbsp; GÜNCELLE &nbsp;&amp;&nbsp; SİL</div>
+                        <h:dataTable value="#{yazarlarBean.liste}" var="yz" class="personel-tablo" 
+                                     styleClass="personel-table" headerClass="personel-tablo-baslik" 
+                                     rowClasses="personel-tablo-tek-satir,personel-tablo-cift-satir"><!--Gelen sonuçlar buraya aktarılacak.-->
+                            <h:column>
+                                <f:facet name="header">Adi</f:facet>
+                                <h:inputText value="#{yz.adi}" rendered="#{yz.guncellenebilirlik}"/>
+                                <!--Güncelle linkine tıklayınca bu kısım devreye girecek.-->
+                                <h:outputText value="#{yz.adi}" rendered="#{not yz.guncellenebilirlik}"/>
+                                <!--Kayıt çekilince ilk burası gelecek. rendered kısmı görünürlüğü işaret ediyor.-->
+                            </h:column>
+                            
+                            <h:column>
+                                <f:facet name="header">Alanı</f:facet>
+                                <h:inputText value="#{yz.alani}" rendered="#{yz.guncellenebilirlik}"/>
+                                <h:outputText value="#{yz.alani}"  rendered="#{not yz.guncellenebilirlik}"/>
+                            </h:column>
+                            
+                            <h:column>
+                                <f:facet name="header">İşlemler</f:facet>
+                            <h:column>
+                                
+                                <h:commandLink value="Kaydet" action="#{yazarlarBean.degistirileniKaydet()}" rendered="#{yz.guncellenebilirlik}" styleClass="kaydet"/>
+                                <h:commandLink value="Güncelle&nbsp;&nbsp;" action="#{yazarlarBean.guncellenebilirligiDegistir(yz)}" 
+                                               rendered="#{not yz.guncellenebilirlik}" styleClass="guncelle"/>
+                            </h:column>
+                            <h:column>
+                                <!--Burada silme işlemi yaptığımız için Beanad,.ID değerini f:param etiketinin value değerine atıyoruz.-->
+                                <h:commandLink action="#{yazarlarBean.KayitSil}" value="&nbsp;&nbsp;Sil" styleClass="sil">
+                                    <f:param name="ID" value="#{yz.ID}"/><!-- Buraya dikkat edelim. Bean ımızın içinde tanımladığımız KayıtSil metodumuz bu ID değeri üzerinden işlem yapacak.-->
+                                </h:commandLink>
+                            </h:column>
+                                </h:column>
+                                
+
+
+
+
+                        </h:dataTable>
+                    </table>
+                </h:form>
+                <br/>
+                <br/>
+                  <!--Burada listeleme işlemi yaptığımız için Beanadı.Değişken değerini output etiketlerimizin value değerine atıyoruz.-->
+                <div class="personelList">PERSONEL LİSTESİ </div>
+                <h:dataTable value="#{yazarlarBean.liste}" var="yaz" class="personel-tablo" styleClass="personel-table" headerClass="personel-tablo-baslik" rowClasses="personel-tablo-tek-satir,personel-tablo-cift-satir">
+                    
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputLabel>ID</h:outputLabel>
+                        </f:facet>
+                        <h:outputLabel value="#{yaz.ID}"></h:outputLabel>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputLabel>ADI</h:outputLabel>
+                        </f:facet>           
+                        <h:outputLabel value="#{yaz.adi}"></h:outputLabel>
+                    </h:column>
+
+                    <h:column>
+                        <f:facet name="header">
+                            <h:outputLabel>SOYADI</h:outputLabel>
+                        </f:facet>
+                        <h:outputLabel value="#{yaz.alani}"></h:outputLabel>
+                    </h:column>
+
+                </h:dataTable>
+            </div>
+        </div>
+    </h:body>
+</html>
+

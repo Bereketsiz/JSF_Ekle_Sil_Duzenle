@@ -1,0 +1,94 @@
+body{
+
+    margin: 0px;
+    padding: 0px;
+}
+.anacerceve{
+
+    width: 100%;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: azure;
+    background-size: auto;
+}
+.tablodiscerceve{
+
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+    height: auto;
+    background-color: snow;
+    display: block;
+
+}
+
+.kirmizi{
+    color:red;
+    margin: 0px;
+    padding: 0px;
+}
+
+.mavi{
+    color:blue;	
+}
+
+.yesil{
+    color:green;	
+    font-family: Verdana,Arial,Helvetica,sans-serif;
+    font-size: 18px;
+}
+
+.kayit
+{   
+    border: 2px solid goldenrod;
+    padding: 5px;
+    background-color: beige;
+}
+.sil
+{
+    text-align: center;
+    text-decoration: none;
+    color: red;
+}
+.guncelle
+{
+    text-align: center;
+    text-decoration: none;
+    color: dodgerblue;
+}
+.kaydet{
+    
+    text-align: center;
+    text-decoration: none;
+    color: #009999;
+}
+.personelList{
+    
+ text-align: center;
+ color: #ffffff;
+ font-family: monospace,cursive,sans-serif,serif;
+ font-size: 30px;
+ font-weight: bolder;
+ background-color: #666666;
+ padding: 5px;
+ letter-spacing: 5px;
+
+}
+.tabloAlt
+{
+    width: 500px;
+    background-color: beige;
+    text-align: center;
+}
+.personelGuncelleDuzenle
+{
+    background-color: brown;
+    color: aliceblue;
+    text-align: center;
+    font-family: fantasy,sans-serif,serif;
+    padding: 5px;
+    padding-top: 15px;
+    font-size: 24px;
+    
+}
